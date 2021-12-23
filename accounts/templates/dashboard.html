@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+{% include 'order.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					
+					<th>Customer</th>
+					<th>Phone</th>
+					<th></th>
+				</tr>
+				{% for i in customers%}
+						<tr>
+						<td>{{i.name}} </td>
+						<td>{{i.phone}} </td>
+						<td><a href="{% url 'customer' i.id%}" ><i class="far fa-eye"></i> </a> </td>
+					    </tr>
+				{% endfor %}
+				
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for i in orders%}
+						<tr>
+						<td>{{i.product}} </td>
+						<td>{{i.date_created}} </td>
+						<td>{{i.status}} </td>
+						<td> <a href="{% url 'updateOrder' i.id %}"><i class="fas fa-edit"></i>  </a> </td>
+						<td><a href="{% url 'deleteOrder' i.id %}"> <i class="fas fa-trash-alt"></i>  </a></td>
+					    </tr>
+				{% endfor %}
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
