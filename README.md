@@ -1,1 +1,1 @@
- create a  customer management platform with django
+A customer management platform with django
